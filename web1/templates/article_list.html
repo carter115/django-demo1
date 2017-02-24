@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="/">首页</a> </li>
+    <li class="actions">{{ b.name }}</li>
+</ol>
+<a class="btn btn-primary" href="/article/create/{{ b.id }}">添加文章</a><br><br>
+
+<div class="panel panel-default">
+<div class="panel-heading">{{ b.name }} -- 列表</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>内容</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.title }}</td>
+            <td>{{ article.content }}</td>
+            <td>{{ article.create_time|date:"Y-m-d P" }}</td>
+            <td>{{ article.update_time|date:"Y-m-d P" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="active"><a href="#">1 </a></li>
+    <li><a href="#">2 </a></li>
+    <li><a href="#">3 </a></li>
+    <li><a href="#">4 </a></li>
+    <li><a href="#">5 </a></li>
+    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
+  </ul>
+</nav>
+
+{% endblock %}
